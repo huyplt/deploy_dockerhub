@@ -1,0 +1,34 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Chạy khi có code push lên nhánh main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Thiết lập Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Cài đặt dependencies
+        run: npm install
+
+      - name: Chạy test
+        run: npm test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy ứng dụng
+        run: echo "Triển khai ứng dụng thành công!"

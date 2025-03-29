@@ -23,15 +23,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd ci-cd-pipeline
           npm install
 
       - name: Run tests
         run: |
-          cd ci-cd-pipeline
+
           npm test
 
       - name: Build project
         run: |
-          cd ci-cd-pipeline
           npm run build

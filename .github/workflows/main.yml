@@ -21,7 +21,7 @@ jobs:
           node-version: 18
       - name: Install Dependencies
         run: npm install
-
+        working-directory: ci-cd-pipeline
       - name: Chạy test
         run: npm test  
 

@@ -20,15 +20,15 @@ jobs:
     # Đăng nhập vào Docker Hub
     - name: Log in to Docker Hub
       run: 
-        docker login -u ${{ secrets.huyplt22 }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker login -u ${{ secrets.DOCKER_NAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
 
     # Build Docker image
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.huyplt22 }}/BeverageDB:latest 
-        docker build -t ${{ secrets.huyplt22 }}/BeverageDW:latest .
+        docker build -t ${{ secrets.DOCKER_NAME }}/BeverageDB:latest 
+        docker build -t ${{ secrets.DOCKER_NAME }}/BeverageDW:latest .
 
     # Push Docker image lên Docker Hub
     - name: Push Docker image
       run: |
-        docker push ${{ secrets.huyplt22 }}/demo-ci-cd-gitlab:latest
+        docker push ${{ secrets.DOCKER_NAME }}/demo-ci-cd-gitlab:latest

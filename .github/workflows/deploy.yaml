@@ -24,12 +24,12 @@ jobs:
         username: ${{ secrets.DOCKER_NAME }}
         password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-    - name: build and push docker image
-      run: docker/build-push-action@v2
-      with:
-          context: .
-          push: true
-          tags: huyplt22/demo-ci-cd-gitlab:latest
-          file: ./Dockerfile  # Đường dẫn đến Dockerfile của bạn
-          
-        
+    # Build Docker image
+    - name: Build Docker image
+      run: |
+        docker build -t ${{ secrets.DOCKER_NAME }}/demo-ci-cd-gitlab:latest .
+
+    # Push Docker image lên Docker Hub
+    - name: Push Docker image
+      run: |
+        docker push ${{ secrets.DOCKER_NAME }}/demo-ci-cd-gitlab:latest

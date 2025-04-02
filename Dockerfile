@@ -2,7 +2,7 @@
 FROM mysql:8
 
 # Sao chép file cấu hình database vào container
-COPY database.sql /docker-entrypoint-initdb.d/
+COPY . .
 
 # Cấu hình thông tin môi trường cho MySQL
 ENV MYSQL_ROOT_PASSWORD=rootpassword
